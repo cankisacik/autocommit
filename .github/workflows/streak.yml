@@ -34,7 +34,10 @@ jobs:
       - name: Make commits
         run: |
           COUNT="${{ github.event.inputs.commit_count }}"
-          COUNT=${COUNT:-1}
+          COUNT="${{ github.event.inputs.commit_count }}"
+          if [ -z "$COUNT" ] || [ "$COUNT" = "1" ]; then
+            COUNT=$((RANDOM % 6 + 3))
+          fi
           LETTERS="abcdefghijklmnopqrstuvwxyz"
           
           for i in $(seq 1 $COUNT); do
