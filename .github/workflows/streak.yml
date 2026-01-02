@@ -12,6 +12,9 @@ on:
           - '1'
           - '2'
           - '3'
+  
+  schedule:
+    - cron: '55 21 * * *'  # Runs daily at midnight Turkey time (21:00 UTC)
 
 jobs:
   streak:
